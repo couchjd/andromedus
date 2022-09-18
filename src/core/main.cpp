@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 int main()
 {
@@ -13,6 +14,18 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            if (event.type == sf::Event::KeyPressed)
+            {
+                if (event.key.code == sf::Keyboard::R)
+                {
+                    shape.setFillColor(sf::Color::Red);
+                }
+                if (event.key.code == sf::Keyboard::B)
+                {
+                    shape.setFillColor(sf::Color::Blue);
+                }
+            }
         }
 
         window.clear();
