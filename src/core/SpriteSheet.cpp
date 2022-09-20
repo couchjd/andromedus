@@ -19,9 +19,9 @@ SpriteSheet::cutSpriteSheet()
    unsigned int y_stride = texture_size.y / m_y_res;
    unsigned int x_stride = texture_size.x / m_x_res;
 
-   for (int y = 0; y < y_stride; y += m_y_res)
+   for (int y = 0; y < texture_size.y; y += m_y_res)
    {
-      for (int x = 0; x < x_stride; x += m_x_res)
+      for (int x = 0; x < texture_size.x; x += m_x_res)
       {
          sf::IntRect sprite_rect(x, y, m_x_res, m_y_res);
          m_sprites.push_back(new sf::Sprite(m_texture, sprite_rect));

@@ -9,6 +9,8 @@ class SpriteSheet
          const unsigned int x_res,
          const unsigned int y_res);
    
+      sf::Sprite* operator [](int i) const { return m_sprites[i]; }
+
    private:
       void cutSpriteSheet();
 
