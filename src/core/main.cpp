@@ -2,10 +2,20 @@
 #include "Util.h"
 
 #include <rapidxml/rapidxml.hpp>
+#include <rapidxml/rapidxml_utils.hpp>
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-void xmlTest();
+struct SpriteInfo
+{
+   std::string m_sheet_path;
+   int m_x_res;
+   int m_y_res;
+
+   std::vector<std::vector<int>> m_sprite_coords;
+};
+
+void xmlTest(SpriteInfo& sprite_info);
 
 int main()
 {
@@ -18,7 +28,9 @@ int main()
 
     SpriteSheet sprite_sheet(test_texture, 25, 36);
 
-    xmlTest();
+    SpriteInfo sprite_info;
+
+    xmlTest(sprite_info);
 
     sf::Clock clock;
     clock.restart();
@@ -61,23 +73,36 @@ int main()
     return 0;
 }
 
-void xmlTest()
+void xmlTest(SpriteInfo& sprite_info)
 {
-   std::string test_xml_path = RESOURCES_FOLDER_PATH + "/test.xml";
-
-   struct stat sb {};
-   std::string res;
-
-#pragma warning(suppress : 4996)
-   FILE* input_file = fopen(test_xml_path.c_str(), "r");
-
-   stat(test_xml_path.c_str(), &sb);
-   res.resize(sb.st_size);
-   fread(const_cast<char*>(res.data()), sb.st_size, 1, input_file);
-   fclose(input_file);
-
+   std::string path = RESOURCES_FOLDER_PATH + "/sprite_test.xml";
+   
+   rapidxml::file<> file(path.data());
+   
    rapidxml::xml_document<> doc;
-   doc.parse<0>(const_cast<char*>(res.data()));
 
-   std::cout << "Name of my first node is: " << doc.first_node()->name() << "\n";
+   doc.parse<0>(file.data());
+
+   rapidxml::xml_node<>* first_node = doc.first_node();
+   
+   rapidxml::xml_attribute<>* attribute = first_node->first_attribute();
+   sprite_info.m_sheet_path = attribute->value();
+
+   attribute = attribute->next_attribute();
+   sprite_info.m_x_res = std::atoi(attribute->value());
+
+   attribute = attribute->next_attribute();
+   sprite_info.m_y_res = std::atoi(attribute->value());
+
+   int x_coord = 0;
+   int y_coord = 0;
+
+   for (const rapidxml::xml_node<>* node = first_node->first_node(); node; node = node->next_sibling())
+   {
+      rapidxml::xml_node<>* child_node = node->first_node();
+      x_coord = std::atoi(child_node->value());
+      y_coord = std::atoi(child_node->next_sibling()->value());
+
+      sprite_info.m_sprite_coords.push_back({ x_coord, y_coord });
+   }
 }
