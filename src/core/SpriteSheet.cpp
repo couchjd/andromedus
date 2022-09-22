@@ -11,6 +11,21 @@ SpriteSheet::SpriteSheet(
    cutSpriteSheet();
 }
 
+SpriteSheet::SpriteSheet(const SpriteInfo& sprite_info) :
+   m_x_res(sprite_info.m_x_res),
+   m_y_res(sprite_info.m_y_res)
+{
+   std::string texture_path = SPRITES_FOLDER_PATH + "/" + sprite_info.m_sheet_path;
+   
+   bool status = m_texture.loadFromFile(texture_path);
+   
+   for (const auto& coord_set : sprite_info.m_sprite_coords)
+   {
+      sf::IntRect sprite_rect(coord_set[0], coord_set[1], m_x_res, m_y_res);
+      m_sprites.push_back(new sf::Sprite(m_texture, sprite_rect));
+   }
+}
+
 //-----------------------------------------------------------------------------
 void 
 SpriteSheet::cutSpriteSheet()

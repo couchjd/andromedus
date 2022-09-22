@@ -6,31 +6,24 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-struct SpriteInfo
-{
-   std::string m_sheet_path;
-   int m_x_res;
-   int m_y_res;
-
-   std::vector<std::vector<int>> m_sprite_coords;
-};
-
 void xmlTest(SpriteInfo& sprite_info);
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(640, 480), "SFML works!");
     
-    std::string test_texture_path = SPRITES_FOLDER_PATH + "/chara2.png";
+    //std::string test_texture_path = SPRITES_FOLDER_PATH + "/chara2.png";
 
-    sf::Texture test_texture;
-    bool status = test_texture.loadFromFile(test_texture_path);
+    //sf::Texture test_texture;
+    //bool status = test_texture.loadFromFile(test_texture_path);
 
-    SpriteSheet sprite_sheet(test_texture, 25, 36);
+    //SpriteSheet sprite_sheet(test_texture, 25, 36);
 
     SpriteInfo sprite_info;
 
     xmlTest(sprite_info);
+
+    SpriteSheet sprite_sheet(sprite_info);
 
     sf::Clock clock;
     clock.restart();
