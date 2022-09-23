@@ -1,5 +1,6 @@
 #include "SpriteSheet.h"
 
+//-----------------------------------------------------------------------------
 SpriteSheet::SpriteSheet(
    const sf::Texture& texture, 
    const unsigned int x_res, 
@@ -11,6 +12,7 @@ SpriteSheet::SpriteSheet(
    cutSpriteSheet();
 }
 
+//-----------------------------------------------------------------------------
 SpriteSheet::SpriteSheet(const SpriteInfo& sprite_info) :
    m_x_res(sprite_info.m_x_res),
    m_y_res(sprite_info.m_y_res)
@@ -43,6 +45,7 @@ SpriteSheet::cutSpriteSheet()
       }
    }
 
-
    sf::Texture texture;
 }
+
+//-----------------------------------------------------------------------------
