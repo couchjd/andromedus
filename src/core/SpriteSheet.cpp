@@ -1,6 +1,13 @@
 #include "SpriteSheet.h"
 
 //-----------------------------------------------------------------------------
+SpriteSheet::SpriteSheet() :
+   m_x_res(0),
+   m_y_res(0)
+{
+}
+
+//-----------------------------------------------------------------------------
 SpriteSheet::SpriteSheet(
    const sf::Texture& texture, 
    const unsigned int x_res, 
@@ -28,6 +35,39 @@ SpriteSheet::SpriteSheet(const SpriteInfo& sprite_info) :
    }
 }
 
+//-----------------------------------------------------------------------------
+void
+SpriteSheet::init(const rapidxml::xml_document<>& doc)
+{
+   rapidxml::xml_node<>* first_node = doc.first_node();
+
+   rapidxml::xml_attribute<>* attribute = first_node->first_attribute();
+   std::string texture_path = SPRITES_FOLDER_PATH + "/" + attribute->value();
+
+   bool status = m_texture.loadFromFile(texture_path);
+
+   attribute = attribute->next_attribute();
+   m_x_res = std::atoi(attribute->value());
+
+   attribute = attribute->next_attribute();
+   m_y_res = std::atoi(attribute->value());
+
+   int x_coord = 0;
+   int y_coord = 0;
+
+   for (const rapidxml::xml_node<>* node = first_node->first_node(); node; node = node->next_sibling())
+   {
+      rapidxml::xml_node<>* child_node = node->first_node();
+      x_coord = std::atoi(child_node->value());
+      y_coord = std::atoi(child_node->next_sibling()->value());
+
+      sf::IntRect sprite_rect(x_coord, y_coord, m_x_res, m_y_res);
+      m_sprites.push_back(new sf::Sprite(m_texture, sprite_rect));
+   }
+}
+
+//-----------------------------------------------------------------------------
+/* Cut the texture into individual sprites of size m_x_res x m_y_res.        */  
 //-----------------------------------------------------------------------------
 void 
 SpriteSheet::cutSpriteSheet()

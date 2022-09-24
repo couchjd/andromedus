@@ -33,6 +33,8 @@ Animation::getAnimationFrames()
 }
 
 //-----------------------------------------------------------------------------
+/* Update the current frame and return the sprite to be displayed.           */    
+//-----------------------------------------------------------------------------
 sf::Sprite* 
 Animation::getNextFrame()
 {

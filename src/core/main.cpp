@@ -1,3 +1,4 @@
+#include "Animation.h"
 #include "SpriteSheet.h"
 #include "Util.h"
 
@@ -6,29 +7,28 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-void xmlTest(SpriteInfo& sprite_info);
+void xmlTest(SpriteSheet& sprite_sheet);
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(640, 480), "SFML works!");
     
-    //std::string test_texture_path = SPRITES_FOLDER_PATH + "/chara2.png";
+    SpriteSheet sprite_sheet;
+    xmlTest(sprite_sheet);
 
-    //sf::Texture test_texture;
-    //bool status = test_texture.loadFromFile(test_texture_path);
+    Animation test_animation;
 
-    //SpriteSheet sprite_sheet(test_texture, 25, 36);
-
-    SpriteInfo sprite_info;
-
-    xmlTest(sprite_info);
-
-    SpriteSheet sprite_sheet(sprite_info);
+    test_animation.insertAnimationFrame(0, sprite_sheet[0]);
+    //test_animation.insertAnimationFrame(1, sprite_sheet[1]);
+    test_animation.insertAnimationFrame(1, sprite_sheet[2]);
+    //test_animation.insertAnimationFrame(3, sprite_sheet[3]);
+    //test_animation.insertAnimationFrame(4, sprite_sheet[4]);
+    //test_animation.insertAnimationFrame(5, sprite_sheet[5]);
 
     sf::Clock clock;
     clock.restart();
 
-    int anim_sprite = 0;
+    sf::Sprite* anim_sprite = test_animation.getNextFrame();
 
     while (window.isOpen())
     {
@@ -54,48 +54,25 @@ int main()
         float elapsed = clock.getElapsedTime().asSeconds();
         if (elapsed >= 0.25f)
         {
-           anim_sprite = (anim_sprite == 0) ? 2 : 0;
+           anim_sprite = test_animation.getNextFrame();
            clock.restart();
         }
 
         window.clear();
-        window.draw(*sprite_sheet[anim_sprite]);
+        window.draw(*anim_sprite);
         window.display();
     }
 
     return 0;
 }
 
-void xmlTest(SpriteInfo& sprite_info)
+void xmlTest(SpriteSheet& sprite_sheet)
 {
    std::string path = RESOURCES_FOLDER_PATH + "/sprite_test.xml";
    
    rapidxml::file<> file(path.data());
-   
    rapidxml::xml_document<> doc;
-
    doc.parse<0>(file.data());
 
-   rapidxml::xml_node<>* first_node = doc.first_node();
-   
-   rapidxml::xml_attribute<>* attribute = first_node->first_attribute();
-   sprite_info.m_sheet_path = attribute->value();
-
-   attribute = attribute->next_attribute();
-   sprite_info.m_x_res = std::atoi(attribute->value());
-
-   attribute = attribute->next_attribute();
-   sprite_info.m_y_res = std::atoi(attribute->value());
-
-   int x_coord = 0;
-   int y_coord = 0;
-
-   for (const rapidxml::xml_node<>* node = first_node->first_node(); node; node = node->next_sibling())
-   {
-      rapidxml::xml_node<>* child_node = node->first_node();
-      x_coord = std::atoi(child_node->value());
-      y_coord = std::atoi(child_node->next_sibling()->value());
-
-      sprite_info.m_sprite_coords.push_back({ x_coord, y_coord });
-   }
+   sprite_sheet.init(doc);
 }

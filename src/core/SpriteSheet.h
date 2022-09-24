@@ -1,6 +1,9 @@
 #pragma once
+
 #include "Util.h"
 
+#include <rapidxml/rapidxml.hpp>
+#include <rapidxml/rapidxml_utils.hpp>
 #include <SFML/Graphics.hpp>
 
 struct SpriteInfo
@@ -15,12 +18,17 @@ struct SpriteInfo
 class SpriteSheet
 {
    public:
+      SpriteSheet();
+
       SpriteSheet(
          const sf::Texture& texture, 
          const unsigned int x_res,
          const unsigned int y_res);
 
       SpriteSheet(const SpriteInfo& sprite_info);
+
+      void
+      init(const rapidxml::xml_document<>& doc);
    
       sf::Sprite* operator [](int i) const { return m_sprites[i]; }
 

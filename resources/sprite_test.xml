@@ -6,46 +6,22 @@
     </sprite>
     <sprite id="1">
         <x>25</x>
-        <y>36</y>
+        <y>0</y>
     </sprite>
     <sprite id="2">
         <x>50</x>
-        <y>72</y>
+        <y>0</y>
     </sprite>
     <sprite id="3">
-        <x>75</x>
-        <y>108</y>
+        <x>0</x>
+        <y>36</y>
     </sprite>
     <sprite id="4">
-        <x>100</x>
-        <y>144</y>
+        <x>25</x>
+        <y>36</y>
     </sprite>
     <sprite id="5">
-        <x>125</x>
-        <y>180</y>
-    </sprite>
-    <sprite id="6">
-        <x>150</x>
-        <y>216</y>
-    </sprite>
-    <sprite id="7">
-        <x>175</x>
-        <y>252</y>
-    </sprite>
-    <sprite id="8">
-        <x>200</x>
-        <y>288</y>
-    </sprite>
-    <sprite id="9">
-        <x>225</x>
-        <y>324</y>
-    </sprite>
-    <sprite id="10">
-        <x>250</x>
-        <y>360</y>
-    </sprite>
-    <sprite id="11">
-        <x>275</x>
-        <y>396</y>
+        <x>50</x>
+        <y>36</y>
     </sprite>
 </spritesheet>

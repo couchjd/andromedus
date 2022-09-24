@@ -19,6 +19,9 @@ public:
    sf::Sprite*
    getNextFrame();
 
+   void
+   saveAnimation(const std::string& filename);
+
 private:
    std::vector<sf::Sprite*> m_anim_frames;
    int m_current_frame;
