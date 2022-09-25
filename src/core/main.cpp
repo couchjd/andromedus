@@ -1,4 +1,5 @@
 #include "Animation.h"
+#include "Character.h"
 #include "SpriteSheet.h"
 #include "Util.h"
 
@@ -25,11 +26,15 @@ int main()
     //test_animation.insertAnimationFrame(4, sprite_sheet[4]);
     //test_animation.insertAnimationFrame(5, sprite_sheet[5]);
 
+    Character test_character;
+
+    test_character.addMovementAnimation(FORWARD, &test_animation);
+
     sf::Clock clock;
     clock.restart();
 
     sf::Sprite* anim_sprite = test_animation.getNextFrame();
-
+    
     while (window.isOpen())
     {
         sf::Event event;
@@ -59,7 +64,7 @@ int main()
         }
 
         window.clear();
-        window.draw(*anim_sprite);
+        window.draw(test_character);
         window.display();
     }
 
