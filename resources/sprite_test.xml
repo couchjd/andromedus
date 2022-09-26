@@ -24,4 +24,28 @@
         <x>50</x>
         <y>36</y>
     </sprite>
+    <sprite id="6">
+        <x>0</x>
+        <y>72</y>
+    </sprite>
+    <sprite id="7">
+        <x>25</x>
+        <y>72</y>
+    </sprite>
+    <sprite id="8">
+        <x>50</x>
+        <y>72</y>
+    </sprite>
+    <sprite id="9">
+        <x>0</x>
+        <y>108</y>
+    </sprite>
+    <sprite id="10">
+        <x>25</x>
+        <y>108</y>
+    </sprite>
+    <sprite id="11">
+        <x>50</x>
+        <y>108</y>
+    </sprite>    
 </spritesheet>

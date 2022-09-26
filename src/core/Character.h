@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Actor.h"
 #include "Animation.h"
 
 #include <map>
@@ -12,7 +13,7 @@ typedef enum
    RIGHT
 } movement_direction;
 
-class Character : public sf::Drawable
+class Character : public sf::Drawable, public Actor
 {
 public:
    Character();
@@ -24,6 +25,8 @@ public:
    virtual void draw(
       sf::RenderTarget& target,
       sf::RenderStates states) const override;
+
+   void update(const sf::Event& event) override;
 
 private:
    movement_direction m_facing;
