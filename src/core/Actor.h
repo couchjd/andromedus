@@ -9,6 +9,9 @@ public:
 
    virtual void update(const sf::Event& event) = 0;
 
+   unsigned int
+   getActorId();
+
 private:
    unsigned int m_actor_id;
 

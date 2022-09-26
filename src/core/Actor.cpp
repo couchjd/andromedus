@@ -5,4 +5,10 @@ Actor::Actor() :
 {
 }
 
+unsigned int
+Actor::getActorId()
+{
+   return m_actor_id;
+}
+
 unsigned int Actor::s_next_actor_id = 1;
