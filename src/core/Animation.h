@@ -13,6 +13,12 @@ public:
    void
    insertAnimationFrames(int insert_at, std::vector<sf::Sprite*> sprites);
 
+   void
+   setIdleSprite(sf::Sprite* sprite);
+
+   sf::Sprite*
+   getIdleSprite();
+
    std::vector<sf::Sprite*>
    getAnimationFrames();
 
@@ -24,5 +30,6 @@ public:
 
 private:
    std::vector<sf::Sprite*> m_anim_frames;
+   sf::Sprite* m_idle_sprite;
    int m_current_frame;
 };

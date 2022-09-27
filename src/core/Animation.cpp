@@ -2,7 +2,8 @@
 
 //-----------------------------------------------------------------------------
 Animation::Animation() :
-   m_current_frame(0)
+   m_current_frame(0),
+   m_idle_sprite(nullptr)
 {
 
 }
@@ -23,6 +24,20 @@ Animation::insertAnimationFrames(int insert_at, std::vector<sf::Sprite*> sprites
    std::vector<sf::Sprite*>::iterator it = m_anim_frames.begin();
 
    m_anim_frames.insert(it + insert_at, sprites.begin(), sprites.end());
+}
+
+//-----------------------------------------------------------------------------
+void 
+Animation::setIdleSprite(sf::Sprite* sprite)
+{
+   m_idle_sprite = sprite;
+}
+
+//-----------------------------------------------------------------------------
+sf::Sprite* 
+Animation::getIdleSprite()
+{
+   return m_idle_sprite;
 }
 
 //-----------------------------------------------------------------------------

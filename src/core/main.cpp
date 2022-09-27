@@ -22,18 +22,18 @@ int main()
    Animation back;
    Animation right;
 
+   forward.setIdleSprite(sprite_sheet[1]);
    forward.insertAnimationFrame(0, sprite_sheet[0]);
-   forward.insertAnimationFrame(1, sprite_sheet[1]);
-   forward.insertAnimationFrame(2, sprite_sheet[2]);
-   left.insertAnimationFrame(3, sprite_sheet[3]);
-   left.insertAnimationFrame(4, sprite_sheet[4]);
-   left.insertAnimationFrame(5, sprite_sheet[5]);
-   back.insertAnimationFrame(6, sprite_sheet[6]);
-   back.insertAnimationFrame(7, sprite_sheet[7]);
-   back.insertAnimationFrame(8, sprite_sheet[8]);
-   right.insertAnimationFrame(9, sprite_sheet[9]);
-   right.insertAnimationFrame(10, sprite_sheet[10]);
-   right.insertAnimationFrame(11, sprite_sheet[11]);
+   forward.insertAnimationFrame(1, sprite_sheet[2]);
+   left.setIdleSprite(sprite_sheet[4]);
+   left.insertAnimationFrame(0, sprite_sheet[3]);
+   left.insertAnimationFrame(1, sprite_sheet[5]);
+   back.setIdleSprite(sprite_sheet[10]);
+   back.insertAnimationFrame(0, sprite_sheet[9]);
+   back.insertAnimationFrame(1, sprite_sheet[11]);
+   right.setIdleSprite(sprite_sheet[7]);
+   right.insertAnimationFrame(0, sprite_sheet[6]);
+   right.insertAnimationFrame(1, sprite_sheet[8]);
 
    Character test_character;
 
@@ -52,16 +52,45 @@ int main()
       {
          if (event.type == sf::Event::Closed)
             window.close();
-
          if (event.type == sf::Event::KeyPressed)
          {
-            if (event.key.code == sf::Keyboard::R)
+            switch (event.key.code)
             {
-
+               case sf::Keyboard::W:
+               {
+                  test_character.setFacing(BACKWARD);
+                  break;
+               }
+               case sf::Keyboard::A:
+               {
+                  test_character.setFacing(LEFT);
+                  break;
+               }
+               case sf::Keyboard::S:
+               {
+                  test_character.setFacing(FORWARD);
+                  break;
+               }
+               case sf::Keyboard::D:
+               {
+                  test_character.setFacing(RIGHT);
+                  break;
+               }
             }
-            if (event.key.code == sf::Keyboard::B)
-            {
+         }
 
+         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) ||
+             sf::Keyboard::isKeyPressed(sf::Keyboard::A) ||
+             sf::Keyboard::isKeyPressed(sf::Keyboard::S) ||
+             sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+         {
+            test_character.setIsMoving(true);
+         }
+         else
+         {
+            if (test_character.getIsMoving())
+            {
+               test_character.setIsMoving(false);
             }
          }
       }
