@@ -42,6 +42,15 @@ int main()
    test_character.addMovementAnimation(BACKWARD, &back);
    test_character.addMovementAnimation(RIGHT, &right);
 
+   sf::Shader shader;
+   std::string v_shader_path = RESOURCES_FOLDER_PATH + "/bloom.vs";
+   std::string f_shader_path = RESOURCES_FOLDER_PATH + "/bloom.fs";
+
+   if (!shader.loadFromFile(v_shader_path, f_shader_path))
+   {
+      std::cout << "FAILED TO LOAD SHADER!\n";
+   }
+
    sf::Clock clock;
    clock.restart();
 
@@ -105,7 +114,7 @@ int main()
       }
 
       window.clear();
-      window.draw(test_character);
+      window.draw(test_character, &shader);
       window.display();
    }
 
