@@ -2,3 +2,13 @@ Neighbor Identity Ideas
 - Neighbors are all famous video game characters
 - A real-world celebrity is your neighbor and all other neighbors are characters from their various movies
 - Neighbors are each from a different historical time period
+- Neighbors are all NPCs from a CRPG
+
+Components To-Do
+- Utility to get sprites from a sprite sheet
+- Sprite animations
+- Input handling
+- World Editor? (separate C# project possibly)
+- GUI
+   - Need to explore options for this
+- Dear ImGUI for dev tools
