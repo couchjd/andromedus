@@ -2,6 +2,14 @@
 
 #include <SFML/Window.hpp>
 
+typedef enum
+{
+   FORWARD,
+   BACKWARD,
+   LEFT,
+   RIGHT
+} movement_direction;
+
 class Actor
 {
 public:

@@ -1,7 +1,11 @@
+#include "ActorUpdateManager.h"
 #include "Animation.h"
 #include "Character.h"
+#include "EventHandlerManager.h"
+#include "InputHandler.h"
 #include "SpriteSheet.h"
 #include "Util.h"
+#include "WindowUpdateManager.h"s
 
 #include <rapidxml/rapidxml.hpp>
 #include <rapidxml/rapidxml_utils.hpp>
@@ -12,7 +16,17 @@ void xmlTest(SpriteSheet& sprite_sheet);
 
 int main()
 {
+   EventHandlerManager event_handler_manager;
+   
    sf::RenderWindow window(sf::VideoMode(640, 480), "SFML works!");
+   WindowUpdateManager window_update_manager(&window);
+
+   ActorUpdateManager actor_update_manager;
+
+   InputHandler input_handler(&actor_update_manager, &window_update_manager);
+   event_handler_manager.addHandler(&input_handler);
+
+
 
    SpriteSheet sprite_sheet;
    xmlTest(sprite_sheet);
@@ -50,49 +64,7 @@ int main()
       sf::Event event;
       while (window.pollEvent(event))
       {
-         if (event.type == sf::Event::Closed)
-            window.close();
-         if (event.type == sf::Event::KeyPressed)
-         {
-            switch (event.key.code)
-            {
-               case sf::Keyboard::W:
-               {
-                  test_character.setFacing(BACKWARD);
-                  break;
-               }
-               case sf::Keyboard::A:
-               {
-                  test_character.setFacing(LEFT);
-                  break;
-               }
-               case sf::Keyboard::S:
-               {
-                  test_character.setFacing(FORWARD);
-                  break;
-               }
-               case sf::Keyboard::D:
-               {
-                  test_character.setFacing(RIGHT);
-                  break;
-               }
-            }
-         }
-
-         if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) ||
-             sf::Keyboard::isKeyPressed(sf::Keyboard::A) ||
-             sf::Keyboard::isKeyPressed(sf::Keyboard::S) ||
-             sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-         {
-            test_character.setIsMoving(true);
-         }
-         else
-         {
-            if (test_character.getIsMoving())
-            {
-               test_character.setIsMoving(false);
-            }
-         }
+         event_handler_manager.callHandlers(event);
       }
 
       float elapsed = clock.getElapsedTime().asSeconds();

@@ -5,14 +5,6 @@
 
 #include <map>
 
-typedef enum
-{
-   FORWARD,
-   BACKWARD,
-   LEFT,
-   RIGHT
-} movement_direction;
-
 class Character : public sf::Drawable, public Actor
 {
 public:
