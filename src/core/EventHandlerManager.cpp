@@ -7,6 +7,12 @@ EventHandlerManager::addHandler(EventHandler* handler)
 }
 
 void 
+EventHandlerManager::handleEvent(const sf::Event& event)
+{
+	callHandlers(event);
+}
+
+void 
 EventHandlerManager::callHandlers(const sf::Event& event)
 {
 	for (EventHandler* handler : m_event_handlers)

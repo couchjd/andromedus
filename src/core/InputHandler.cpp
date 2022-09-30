@@ -47,13 +47,13 @@ InputHandler::handleEvent(const sf::Event& event)
        sf::Keyboard::isKeyPressed(sf::Keyboard::S) ||
        sf::Keyboard::isKeyPressed(sf::Keyboard::D))
    {
-      test_character.setIsMoving(true);
+      //test_character.setIsMoving(true);
    }
    else
    {
-      if (test_character.getIsMoving())
+      if (true/*test_character.getIsMoving()*/)
       {
-         test_character.setIsMoving(false);
+         //test_character.setIsMoving(false);
       }
    }
 }

@@ -2,6 +2,7 @@
 
 #include "Actor.h"
 #include "Animation.h"
+#include "SpriteSheet.h"
 
 #include <map>
 
@@ -9,6 +10,9 @@ class Character : public sf::Drawable, public Actor
 {
 public:
    Character();
+
+   void
+   init();
 
    void addMovementAnimation(
       const movement_direction,
@@ -26,9 +30,14 @@ public:
 
    void setIsMoving(bool is_moving);
 
+   void loadSpriteSheet();
+
+   void initAnimations();
+
 private:
    movement_direction m_facing;
    bool m_moving;
+   SpriteSheet m_sprite_sheet;
    sf::Sprite* m_active_sprite;
    
    std::map<movement_direction, Animation*> m_movement_animations;
