@@ -3,8 +3,12 @@
 #include "ActorUpdateManager.h"
 #include "EventHandlerManager.h"
 #include "InputHandler.h"
+#include "WindowUpdateManager.h"
 
 #include "Character.h"
+#include "Player.h"
+
+#include <queue>
 
 class Game
 {
@@ -17,10 +21,21 @@ public:
    void update();
    void render();
 
+   Character* getMainCharacter();
+
+   WindowUpdateManager* getWindowUpdateManager();
+
+   ActorUpdateManager* getActorUpdateManager();
+
+   void enqueueEvent(sf::Event event);
+
 private:
-   Character* m_main_character;
+   Player* m_main_character;
    sf::RenderWindow* m_main_window;
    ActorUpdateManager* m_actor_update_mgr;
    EventHandlerManager* m_event_handler_mgr;
    InputHandler* m_input_handler;
+   WindowUpdateManager* m_window_update_mgr;
+
+   std::queue<sf::Event> m_update_queue;
 };

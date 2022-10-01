@@ -1,4 +1,5 @@
 #include "ActorUpdateManager.h"
+#include "Player.h"
 
 ActorUpdateManager::ActorUpdateManager() :
    m_player_character(nullptr)
@@ -28,6 +29,18 @@ ActorUpdateManager::update(const sf::Event& event)
 {
    for (auto actor : m_actors_map)
    {
-      actor.second->update(event);
+      // Player Character should have m_actor_id == 1
+      if (actor.second->getActorId() == 1)
+      {
+         Player* player = dynamic_cast<Player*>(actor.second);
+         if (player)
+         {
+            player->update(event);
+         }
+      }
+      else
+      {
+         actor.second->update(event);
+      }
    }
 }

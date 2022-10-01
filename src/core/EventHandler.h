@@ -4,5 +4,5 @@
 class EventHandler
 {
 public:
-	virtual void handleEvent(const sf::Event& event) = 0;
+	virtual void handleEvent(sf::Event& event) = 0;
 };

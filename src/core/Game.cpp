@@ -1,21 +1,24 @@
 #include "Game.h"
+#include <iostream>
 
 #define MS_PER_UPDATE 30
 
 void 
 Game::init()
 {
-   m_main_character = new Character();
+   m_main_character = new Player();
    m_main_character->init();
 
    m_actor_update_mgr = new ActorUpdateManager();
    m_actor_update_mgr->addActor(m_main_character);
    
-   m_input_handler = new InputHandler();
+   m_input_handler = new InputHandler(this);
    m_event_handler_mgr = new EventHandlerManager();
    m_event_handler_mgr->addHandler(m_input_handler);
 
    m_main_window = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML works!");
+   m_window_update_mgr = new WindowUpdateManager(m_main_window);
+
 }
 
 void
@@ -42,6 +45,8 @@ Game::run()
 
       render();
    }
+
+   shutdown();
 }
 
 void 
@@ -49,6 +54,7 @@ Game::shutdown()
 {
    delete m_main_window;
    delete m_event_handler_mgr;
+   delete m_input_handler;
    delete m_actor_update_mgr;
    delete m_main_character;
 }
@@ -64,7 +70,13 @@ void Game::handleEvents()
 
 void Game::update()
 {
-
+   while (!m_update_queue.empty())
+   {
+      sf::Event event = m_update_queue.front();
+      std::cout << "Handling event type: " << event.type << "\n";
+      m_actor_update_mgr->update(event);
+      m_update_queue.pop();
+   }
 }
 
 void Game::render()
@@ -72,4 +84,24 @@ void Game::render()
    m_main_window->clear();
    m_main_window->draw(*m_main_character);
    m_main_window->display();
+}
+
+Character* Game::getMainCharacter()
+{
+    return m_main_character;
+}
+
+WindowUpdateManager* Game::getWindowUpdateManager()
+{
+   return m_window_update_mgr;
+}
+
+ActorUpdateManager* Game::getActorUpdateManager()
+{
+   return m_actor_update_mgr;
+}
+
+void Game::enqueueEvent(sf::Event event)
+{
+   m_update_queue.push(event);
 }

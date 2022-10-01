@@ -4,17 +4,15 @@
 #include "EventHandler.h"
 #include "WindowUpdateManager.h"
 
+class Game;
+
 class InputHandler : public EventHandler
 {
 public:
-	InputHandler();
-	InputHandler(
-		ActorUpdateManager* actor_update_manager,
-		WindowUpdateManager* window_update_manager);
+	InputHandler(Game* game);
 
-	void handleEvent(const sf::Event& event);
+	void handleEvent(sf::Event& event) override;
 
 private:
-	ActorUpdateManager* m_actor_update_manager;
-	WindowUpdateManager* m_window_update_manager;
+	Game* m_game;
 };

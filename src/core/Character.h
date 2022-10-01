@@ -22,7 +22,7 @@ public:
       sf::RenderTarget& target,
       sf::RenderStates states) const override;
 
-   void update(const sf::Event& event) override;
+   virtual void update(const sf::Event& event) override;
 
    void setFacing(const movement_direction facing);
 
@@ -34,7 +34,7 @@ public:
 
    void initAnimations();
 
-private:
+protected:
    movement_direction m_facing;
    bool m_moving;
    SpriteSheet m_sprite_sheet;
