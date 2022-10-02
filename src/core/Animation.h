@@ -30,6 +30,8 @@ public:
 
 private:
    std::vector<sf::Sprite*> m_anim_frames;
+   sf::Clock m_animation_timer;
+   sf::Time m_last_animation_time;
    sf::Sprite* m_idle_sprite;
    int m_current_frame;
 };

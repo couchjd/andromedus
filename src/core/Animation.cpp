@@ -1,11 +1,13 @@
 #include "Animation.h"
 
+#define UPDATE_INTERVAL_MS 100
+
 //-----------------------------------------------------------------------------
 Animation::Animation() :
    m_current_frame(0),
    m_idle_sprite(nullptr)
 {
-
+   m_last_animation_time = m_animation_timer.restart();
 }
 
 //-----------------------------------------------------------------------------
@@ -53,14 +55,23 @@ Animation::getAnimationFrames()
 sf::Sprite* 
 Animation::getNextFrame()
 {
-   int current_frame = m_current_frame;
+   //int current_frame = m_current_frame;
 
-   m_current_frame++;
+   sf::Time elapsed = m_animation_timer.getElapsedTime();
 
-   if (m_current_frame >= m_anim_frames.size())
+   double delta = elapsed.asMilliseconds() - m_last_animation_time.asMilliseconds();
+
+   if (delta >= UPDATE_INTERVAL_MS)
    {
-      m_current_frame = 0;
+      m_current_frame++;
+
+      if (m_current_frame >= m_anim_frames.size())
+      {
+         m_current_frame = 0;
+      }
+      
+      m_animation_timer.restart();
    }
 
-   return m_anim_frames[current_frame];
+   return m_anim_frames[m_current_frame];
 }

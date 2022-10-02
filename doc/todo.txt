@@ -1,0 +1,22 @@
+- Add a field m_main_character to ActorUpdateManager
+- Add a StateManager class
+- Add pointer to StateManager in InputHandler
+- Create Game class to encapsulate main functionality
+  - Add proper initialization and shutdown in Game class.
+    - Create window
+    - Create handlers and managers
+    - Create main character (for now)
+
+
+
+  Main Loop
+    get input (Game)
+      get events (EventHandler)
+      enqueue events (EventHandler -> Game)
+    
+    Update
+      get events from queue (Game)
+      dispatch events to proper handlers (Game -> UpdateManager)
+        update objects (UpdateManager -> specific Managers)
+
+    Draw

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Util.h"
-
 #include <rapidxml/rapidxml.hpp>
 #include <rapidxml/rapidxml_utils.hpp>
 #include <SFML/Graphics.hpp>
+
+#include "Util.h"
 
 struct SpriteInfo
 {
