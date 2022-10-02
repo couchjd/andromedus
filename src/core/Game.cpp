@@ -6,8 +6,13 @@
 void 
 Game::init()
 {
+   const char* method_name = "Game::Init()";
+
+   DEBUG(method_name << " : Initializing subsystems.")
+
    m_main_character = new Player();
    m_main_character->init();
+   DEBUG("Player character initialized. Actor ID: " << m_main_character->getActorId())
 
    m_actor_update_mgr = new ActorUpdateManager();
    m_actor_update_mgr->addActor(m_main_character);
@@ -16,9 +21,9 @@ Game::init()
    m_event_handler_mgr = new EventHandlerManager();
    m_event_handler_mgr->addHandler(m_input_handler);
 
+   DEBUG("Creating main window.")
    m_main_window = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML works!");
    m_window_update_mgr = new WindowUpdateManager(m_main_window);
-
 }
 
 void
@@ -73,7 +78,8 @@ void Game::update()
    while (!m_update_queue.empty())
    {
       sf::Event event = m_update_queue.front();
-      std::cout << "Handling event type: " << event.type << "\n";
+      
+      DEBUG("Handling event type: " << sf_event_types[event.type] << "\n\tKey/Button Code : " << event.key.code)
       m_actor_update_mgr->update(event);
       m_update_queue.pop();
    }
