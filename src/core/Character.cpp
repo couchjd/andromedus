@@ -3,7 +3,6 @@
 #include <rapidxml/rapidxml_utils.hpp>
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Util.h"
 
 Character::Character() :
    m_moving(false),
