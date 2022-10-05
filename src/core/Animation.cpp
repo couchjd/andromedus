@@ -55,8 +55,6 @@ Animation::getAnimationFrames()
 sf::Sprite* 
 Animation::getNextFrame()
 {
-   //int current_frame = m_current_frame;
-
    sf::Time elapsed = m_animation_timer.getElapsedTime();
 
    double delta = elapsed.asMilliseconds() - m_last_animation_time.asMilliseconds();
