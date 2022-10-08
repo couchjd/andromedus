@@ -1,90 +1,165 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{90e37095-04b8-4217-9c0e-c5fad501d9dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event\Header Files">
+      <UniqueIdentifier>{6ca2fd92-2375-4ef3-87bc-e25dfe9a53a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event\Source Files">
+      <UniqueIdentifier>{75e02243-8c69-43c5-8438-ed732bbd1e63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor">
+      <UniqueIdentifier>{2fb8adc1-5eb9-4228-a78d-86b33c7ee5bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Header Files">
+      <UniqueIdentifier>{607d56ab-b75e-4f24-a0f5-8aa8539d5d38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actor\Source Files">
+      <UniqueIdentifier>{faba4280-7913-4512-ad34-40044cc8c4b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{92f0ae11-cd33-4e9a-8d87-7591f73dc2b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Main\Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="DevUI">
+      <UniqueIdentifier>{a6b1c828-1661-432e-bf3a-db4cf3394c65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DevUI\Header Files">
+      <UniqueIdentifier>{f61ba7e7-d2e6-4e1b-a17d-2ba7a4986f9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DevUI\Source Files">
+      <UniqueIdentifier>{b98b9545-3e8c-436d-a64c-bed58139e3c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DevUI\Dear ImGUI">
+      <UniqueIdentifier>{70f24f05-eeb9-40f0-9d98-47d11c5085e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Main\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Main\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorUpdateManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EventHandlerManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowUpdateManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Main\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Main\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorUpdateManager.cpp">
+      <Filter>Event\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandlerManager.cpp">
+      <Filter>Event\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputHandler.cpp">
+      <Filter>Event\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowUpdateManager.cpp">
+      <Filter>Event\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Actor\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Actor\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Actor\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileOpenWindow.cpp">
+      <Filter>DevUI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiBaseWindow.cpp">
+      <Filter>DevUI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuiEventHandler.cpp">
+      <Filter>DevUI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGuiUiMangager.cpp">
+      <Filter>DevUI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\imgui\imgui.cpp">
+      <Filter>DevUI\Dear ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\imgui\imgui_draw.cpp">
+      <Filter>DevUI\Dear ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\imgui\imgui_widgets.cpp">
+      <Filter>DevUI\Dear ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\imgui-sfml\imgui-SFML.cpp">
+      <Filter>DevUI\Dear ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\imgui\imgui_demo.cpp">
+      <Filter>DevUI\Dear ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\imgui\imgui_tables.cpp">
+      <Filter>DevUI\Dear ImGUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpriteSheet.h">
-      <Filter>Header Files</Filter>
+      <Filter>Main\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Util.h">
-      <Filter>Header Files</Filter>
+      <Filter>Main\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ActorUpdateManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventHandlerManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowUpdateManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Main\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
+      <Filter>Main\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorUpdateManager.h">
+      <Filter>Event\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>Event\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandlerManager.h">
+      <Filter>Event\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputHandler.h">
+      <Filter>Event\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowUpdateManager.h">
+      <Filter>Event\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Actor\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Actor\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
+      <Filter>Actor\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileOpenWindow.h">
+      <Filter>DevUI\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GuiBaseWindow.h">
+      <Filter>DevUI\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuiEventHandler.h">
+      <Filter>DevUI\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuiUiManager.h">
+      <Filter>DevUI\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
