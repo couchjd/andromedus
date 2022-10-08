@@ -5,8 +5,12 @@
 class Player : public Character
 {
 public:
+   Player();
+
    void update(const sf::Event& event) override;
 
-private:
+   sf::Shader& getShader();
 
+private:
+   sf::Shader m_shader;
 };

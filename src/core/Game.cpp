@@ -88,7 +88,7 @@ void Game::update()
 void Game::render()
 {
    m_main_window->clear();
-   m_main_window->draw(*m_main_character);
+   m_main_window->draw(*m_main_character, &m_main_character->getShader());
    m_main_window->display();
 }
 

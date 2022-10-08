@@ -1,16 +1,10 @@
-#version 140
+#version 330 core
+layout (location = 0) in vec3 aPos; // the position variable has attribute position 0
 
-in vec2 a_position;
-in vec2 a_tex_coord;
-in vec4 a_colour;
+in vec4 FragColor;
+out vec4 vertexColor; // specify a color output to the fragment shader
 
-uniform mat4 matrix;
-
-out vec4 v_colour;
-out vec2 tex_coord;
-
-void main() {
-   v_colour = a_colour;
-   tex_coord = a_tex_coord;
-   gl_Position = matrix * vec4(a_position, 0, 1);
+void main()
+{
+    vertexColor = FragColor; // set the output variable to a dark-red color
 }

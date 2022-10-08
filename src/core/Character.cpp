@@ -34,7 +34,7 @@ Character::draw(
 {
    if (m_active_sprite)
    {
-      target.draw(*m_active_sprite);
+      target.draw(*m_active_sprite, states);
    }
 }
 

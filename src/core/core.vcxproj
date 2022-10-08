@@ -175,6 +175,10 @@
     <ClInclude Include="Util.h" />
     <ClInclude Include="WindowUpdateManager.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\resources\bloom.fs" />
+    <None Include="..\..\resources\bloom.vs" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
