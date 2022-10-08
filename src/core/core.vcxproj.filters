@@ -96,9 +96,6 @@
     <ClCompile Include="..\..\include\imgui\imgui.cpp">
       <Filter>DevUI\Dear ImGUI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\include\imgui\imgui_demo.cpp">
-      <Filter>DevUI\Dear ImGUI</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\include\imgui\imgui_draw.cpp">
       <Filter>DevUI\Dear ImGUI</Filter>
     </ClCompile>
@@ -106,6 +103,12 @@
       <Filter>DevUI\Dear ImGUI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\include\imgui-sfml\imgui-SFML.cpp">
+      <Filter>DevUI\Dear ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\imgui\imgui_demo.cpp">
+      <Filter>DevUI\Dear ImGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\include\imgui\imgui_tables.cpp">
       <Filter>DevUI\Dear ImGUI</Filter>
     </ClCompile>
   </ItemGroup>
