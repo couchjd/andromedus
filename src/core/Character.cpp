@@ -89,16 +89,20 @@ void Character::initAnimations()
 
    forward->setIdleSprite(m_sprite_sheet[1]);
    forward->insertAnimationFrame(0, m_sprite_sheet[0]);
-   forward->insertAnimationFrame(1, m_sprite_sheet[2]);
+   forward->insertAnimationFrame(1, m_sprite_sheet[1]);
+   forward->insertAnimationFrame(2, m_sprite_sheet[2]);
    left->setIdleSprite(m_sprite_sheet[4]);
    left->insertAnimationFrame(0, m_sprite_sheet[3]);
-   left->insertAnimationFrame(1, m_sprite_sheet[5]);
+   left->insertAnimationFrame(1, m_sprite_sheet[4]);
+   left->insertAnimationFrame(2, m_sprite_sheet[5]);
    back->setIdleSprite(m_sprite_sheet[10]);
    back->insertAnimationFrame(0, m_sprite_sheet[9]);
-   back->insertAnimationFrame(1, m_sprite_sheet[11]);
+   back->insertAnimationFrame(1, m_sprite_sheet[10]);
+   back->insertAnimationFrame(2, m_sprite_sheet[11]);
    right->setIdleSprite(m_sprite_sheet[7]);
    right->insertAnimationFrame(0, m_sprite_sheet[6]);
-   right->insertAnimationFrame(1, m_sprite_sheet[8]);
+   right->insertAnimationFrame(1, m_sprite_sheet[7]);
+   right->insertAnimationFrame(2, m_sprite_sheet[8]);
 
    addMovementAnimation(FORWARD, forward);
    addMovementAnimation(LEFT, left);
