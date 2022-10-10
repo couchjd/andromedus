@@ -17,6 +17,7 @@ public:
 	void render();
 	void shutdown();
 	void addWindow(GuiBaseWindow* new_window);
+
 	ImGuiEventHandler* getEventHandler();
 
 private:

@@ -1,4 +1,7 @@
 #include "Game.h"
+
+#include "FileOpenWindow.h"
+
 #include <iostream>
 
 #define MS_PER_UPDATE 30
@@ -24,6 +27,12 @@ Game::init()
    DEBUG("Creating main window.")
    m_main_window = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML works!");
    m_window_update_mgr = new WindowUpdateManager(m_main_window);
+
+   m_imgui_manager = new ImGuiUIManager(m_main_window);
+   m_event_handler_mgr->addHandler(new ImGuiEventHandler());
+
+   FileOpenWindow* file_open_window = new FileOpenWindow();
+   m_imgui_manager->addWindow(file_open_window);
 }
 
 void
@@ -32,6 +41,8 @@ Game::run()
    sf::Clock clock;
    double previous = clock.restart().asMilliseconds();
    double lag = 0.0;
+
+   m_main_window->resetGLStates();
 
    while (m_main_window->isOpen())
    {
@@ -42,11 +53,7 @@ Game::run()
 
       handleEvents();
 
-      while (lag >= MS_PER_UPDATE)
-      {
-         update();
-         lag -= MS_PER_UPDATE;
-      }
+      update(clock.restart());
 
       render();
    }
@@ -73,8 +80,13 @@ void Game::handleEvents()
    }
 }
 
-void Game::update()
+void Game::update(sf::Time time)
 {
+   if(m_imgui_manager)
+   {
+      m_imgui_manager->update(time);
+   }
+
    while (!m_update_queue.empty())
    {
       sf::Event event = m_update_queue.front();
@@ -83,13 +95,18 @@ void Game::update()
       m_actor_update_mgr->update(event);
       m_update_queue.pop();
    }
+
+
 }
 
 void Game::render()
 {
    m_main_window->clear();
+
    m_main_window->draw(*m_main_character);
+   m_imgui_manager->render();
    m_main_window->display();
+   
 }
 
 Character* Game::getMainCharacter()

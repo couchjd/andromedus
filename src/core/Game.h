@@ -1,7 +1,11 @@
 #pragma once
 
+#include "imgui/imgui.h"
+#include "imgui-sfml/imgui-SFML.h"
+
 #include "ActorUpdateManager.h"
 #include "EventHandlerManager.h"
+#include "ImGuiUiManager.h"
 #include "InputHandler.h"
 #include "WindowUpdateManager.h"
 
@@ -18,7 +22,7 @@ public:
    void shutdown();
 
    void handleEvents();
-   void update();
+   void update(sf::Time time);
    void render();
 
    Character* getMainCharacter();
@@ -36,6 +40,7 @@ private:
    EventHandlerManager* m_event_handler_mgr;
    InputHandler* m_input_handler;
    WindowUpdateManager* m_window_update_mgr;
+   ImGuiUIManager* m_imgui_manager;
 
    std::queue<sf::Event> m_update_queue;
 };
