@@ -37,6 +37,7 @@ public:
 protected:
    movement_direction m_facing;
    bool m_moving;
+   bool m_selected;
    SpriteSheet m_sprite_sheet;
    sf::Sprite* m_active_sprite;
    

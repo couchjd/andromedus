@@ -6,6 +6,7 @@
 
 Character::Character() :
    m_moving(false),
+   m_selected(false),
    m_facing(FORWARD),
    m_active_sprite(nullptr)
 {

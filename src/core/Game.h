@@ -17,6 +17,7 @@
 class Game
 {
 public:
+   Game();
    void init();
    void run();
    void shutdown();
@@ -34,11 +35,13 @@ public:
    void enqueueEvent(sf::Event event);
 
 private:
+   void initializeManagers();
+   void initializeHandlers();
+
    Player* m_main_character;
    sf::RenderWindow* m_main_window;
    ActorUpdateManager* m_actor_update_mgr;
    EventHandlerManager* m_event_handler_mgr;
-   InputHandler* m_input_handler;
    WindowUpdateManager* m_window_update_mgr;
    ImGuiUIManager* m_imgui_manager;
 

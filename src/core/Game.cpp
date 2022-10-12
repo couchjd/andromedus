@@ -1,38 +1,34 @@
 #include "Game.h"
 
 #include "FileOpenWindow.h"
+#include "MouseHandler.h"
 
 #include <iostream>
 
-#define MS_PER_UPDATE 30
+Game::Game() :
+   m_main_character(nullptr)
+{
+}
 
-void 
+void
 Game::init()
 {
    const char* method_name = "Game::Init()";
 
-   DEBUG(method_name << " : Initializing subsystems.")
+   DEBUG(method_name << " : Initializing subsystems.");
+
+   m_main_window = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML works!");
+   
+   initializeManagers();
 
    m_main_character = new Player();
    m_main_character->init();
-   DEBUG("Player character initialized. Actor ID: " << m_main_character->getActorId())
-
-   m_actor_update_mgr = new ActorUpdateManager();
    m_actor_update_mgr->addActor(m_main_character);
-   
-   m_input_handler = new InputHandler(this);
-   m_event_handler_mgr = new EventHandlerManager();
-   m_event_handler_mgr->addHandler(m_input_handler);
-
-   DEBUG("Creating main window.")
-   m_main_window = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML works!");
-   m_window_update_mgr = new WindowUpdateManager(m_main_window);
-
-   m_imgui_manager = new ImGuiUIManager(m_main_window);
-   m_event_handler_mgr->addHandler(new ImGuiEventHandler());
 
    FileOpenWindow* file_open_window = new FileOpenWindow();
    m_imgui_manager->addWindow(file_open_window);
+
+   initializeHandlers();
 }
 
 void
@@ -40,17 +36,11 @@ Game::run()
 {
    sf::Clock clock;
    double previous = clock.restart().asMilliseconds();
-   double lag = 0.0;
 
    m_main_window->resetGLStates();
 
    while (m_main_window->isOpen())
    {
-      double current = clock.getElapsedTime().asMilliseconds();
-      double elapsed = current - previous;
-      previous = current;
-      lag += elapsed;
-
       handleEvents();
 
       update(clock.restart());
@@ -64,11 +54,17 @@ Game::run()
 void 
 Game::shutdown()
 {
-   delete m_main_window;
+   delete m_imgui_manager;
+   
+   delete m_window_update_mgr;
+   
    delete m_event_handler_mgr;
-   delete m_input_handler;
-   delete m_actor_update_mgr;
+   
    delete m_main_character;
+   
+   delete m_actor_update_mgr;
+
+   delete m_main_window;
 }
 
 void Game::handleEvents()
@@ -95,8 +91,6 @@ void Game::update(sf::Time time)
       m_actor_update_mgr->update(event);
       m_update_queue.pop();
    }
-
-
 }
 
 void Game::render()
@@ -128,3 +122,22 @@ void Game::enqueueEvent(sf::Event event)
 {
    m_update_queue.push(event);
 }
+
+void Game::initializeManagers()
+{
+   m_actor_update_mgr = new ActorUpdateManager();
+
+   m_event_handler_mgr = new EventHandlerManager();
+
+   m_window_update_mgr = new WindowUpdateManager(m_main_window);
+
+   m_imgui_manager = new ImGuiUIManager(m_main_window);
+}
+
+void Game::initializeHandlers()
+{
+   m_event_handler_mgr->addHandler(new InputHandler(this));
+   m_event_handler_mgr->addHandler(new ImGuiEventHandler());
+   m_event_handler_mgr->addHandler(new MouseHandler());
+}
+

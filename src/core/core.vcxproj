@@ -167,6 +167,7 @@
     <ClCompile Include="ImGuiUiMangager.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MouseHandler.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="WindowUpdateManager.cpp" />
@@ -184,6 +185,7 @@
     <ClInclude Include="ImGuiEventHandler.h" />
     <ClInclude Include="ImGuiUiManager.h" />
     <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="MouseHandler.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="Util.h" />
