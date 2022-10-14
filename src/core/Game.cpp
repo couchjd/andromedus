@@ -6,7 +6,11 @@
 #include <iostream>
 
 Game::Game() :
-   m_main_character(nullptr)
+   m_main_character(nullptr),
+   m_main_window(nullptr),
+   m_actor_update_mgr(nullptr),
+   m_imgui_manager(nullptr),
+   m_test_window(nullptr)
 {
 }
 
@@ -16,6 +20,8 @@ Game::init()
    const char* method_name = "Game::Init()";
 
    DEBUG(method_name << " : Initializing subsystems.");
+   //m_test_window = new Window();
+   //m_test_window->init(800, 600, "TEST WINDOW");
 
    m_main_window = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML works!");
    

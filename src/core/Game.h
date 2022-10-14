@@ -14,6 +14,8 @@
 
 #include <queue>
 
+#include <Window.h>
+
 class Game
 {
 public:
@@ -40,6 +42,9 @@ private:
 
    Player* m_main_character;
    sf::RenderWindow* m_main_window;
+
+   Window* m_test_window;
+
    ActorUpdateManager* m_actor_update_mgr;
    EventHandlerManager* m_event_handler_mgr;
    WindowUpdateManager* m_window_update_mgr;
