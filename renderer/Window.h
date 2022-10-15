@@ -1,5 +1,6 @@
 #pragma once
 #include "Status.h"
+#include "Model.h"
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -15,6 +16,10 @@ public:
       const char* title,
       const GLFWmonitor* monitor = nullptr,
       const GLFWwindow* share = nullptr);
+
+   void draw(Model& model, Shader& shader);
+
+   bool shouldClose();
 
 private:
    static void framebufferSizeCallback(GLFWwindow* window, int width, int height);

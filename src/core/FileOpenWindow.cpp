@@ -1,5 +1,4 @@
 #include "FileOpenWindow.h"
-#include <SFML/Graphics.hpp>
 
 #include <iostream>
 
@@ -19,9 +18,7 @@ FileOpenWindow::update()
 			ImGui::InputText("Filename", m_file_name, FILE_NAME_SIZE);
 			if (ImGui::Button("Open"))
 			{
-				sf::Texture test_texture;
-				test_texture.loadFromFile(m_file_name);
-				std::cout << "Loaded: " << m_file_name << std::endl;
+				std::cout << "Open Button Pressed\n";
 			}
 		}
 		end();

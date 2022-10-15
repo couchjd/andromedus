@@ -1,7 +1,7 @@
 #pragma once
 
 #include "imgui/imgui.h"
-#include "imgui-sfml/imgui-SFML.h"
+#include <string>
 
 class GuiBaseWindow
 {

@@ -25,15 +25,41 @@ status_type Window::init(
 		glfwTerminate();
 		status = FAILURE;
 	}
-
-	if (STATUS_IS_FAILURE(status))
+	GLenum err = 0;
+	if (STATUS_IS_SUCCESS(status))
 	{
 		glfwMakeContextCurrent(m_gl_window);
 		glfwSetFramebufferSizeCallback(m_gl_window, framebufferSizeCallback);
 		glfwSetScrollCallback(m_gl_window, scrollCallback);
+
+		err = glewInit();
+		glewExperimental = true;
 	}
 
    return status;
+}
+
+void Window::draw(Model& model, Shader& shader)
+{
+	glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	// don't forget to enable shader before setting uniforms
+	shader.use();
+
+	model.Draw(shader);
+}
+
+bool Window::shouldClose()
+{
+	bool should_close = true;
+
+	if (m_gl_window)
+	{
+		should_close = glfwWindowShouldClose(m_gl_window);
+	}
+
+	return should_close;
 }
 
 void Window::framebufferSizeCallback(GLFWwindow* window, int width, int height)

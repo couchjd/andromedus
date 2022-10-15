@@ -13,7 +13,7 @@
 
 #define MAX_BONE_INFLUENCE 4
 
-struct __declspec(dllexport) Vertex
+struct Vertex
 {
    glm::vec3 position;
    glm::vec3 normal;
@@ -25,14 +25,14 @@ struct __declspec(dllexport) Vertex
    float m_weights[MAX_BONE_INFLUENCE];
 };
 
-struct __declspec(dllexport) Texture
+struct Texture
 {
    unsigned int id;
    std::string type;
    std::string path;
 };
 
-class __declspec(dllexport) Mesh
+class Mesh
 {
 public:
    std::vector<Vertex> m_vertices;

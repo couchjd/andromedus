@@ -5,24 +5,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Event">
-      <UniqueIdentifier>{90e37095-04b8-4217-9c0e-c5fad501d9dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Event\Header Files">
-      <UniqueIdentifier>{6ca2fd92-2375-4ef3-87bc-e25dfe9a53a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Event\Source Files">
-      <UniqueIdentifier>{75e02243-8c69-43c5-8438-ed732bbd1e63}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Actor">
-      <UniqueIdentifier>{2fb8adc1-5eb9-4228-a78d-86b33c7ee5bc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Actor\Header Files">
-      <UniqueIdentifier>{607d56ab-b75e-4f24-a0f5-8aa8539d5d38}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Actor\Source Files">
-      <UniqueIdentifier>{faba4280-7913-4512-ad34-40044cc8c4b9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main">
       <UniqueIdentifier>{92f0ae11-cd33-4e9a-8d87-7591f73dc2b7}</UniqueIdentifier>
     </Filter>
@@ -46,60 +28,18 @@
     <Filter Include="DevUI\Dear ImGUI">
       <UniqueIdentifier>{70f24f05-eeb9-40f0-9d98-47d11c5085e6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Input">
-      <UniqueIdentifier>{926ba687-0dff-486c-87b5-ba548799816c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Input\Header Files">
-      <UniqueIdentifier>{80ca8e9c-2d98-4637-8997-2720537f41b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Input\Source Files">
-      <UniqueIdentifier>{abec727f-d922-4874-ae1b-bb5ffcde3110}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Main\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Main\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>Main\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Main\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorUpdateManager.cpp">
-      <Filter>Event\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EventHandlerManager.cpp">
-      <Filter>Event\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InputHandler.cpp">
-      <Filter>Event\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowUpdateManager.cpp">
-      <Filter>Event\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Actor.cpp">
-      <Filter>Actor\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>Actor\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Actor\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FileOpenWindow.cpp">
       <Filter>DevUI\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GuiBaseWindow.cpp">
-      <Filter>DevUI\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGuiEventHandler.cpp">
-      <Filter>DevUI\Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ImGuiUiMangager.cpp">
       <Filter>DevUI\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\include\imgui\imgui.cpp">
@@ -111,70 +51,25 @@
     <ClCompile Include="..\..\include\imgui\imgui_widgets.cpp">
       <Filter>DevUI\Dear ImGUI</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\include\imgui-sfml\imgui-SFML.cpp">
-      <Filter>DevUI\Dear ImGUI</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\include\imgui\imgui_demo.cpp">
       <Filter>DevUI\Dear ImGUI</Filter>
     </ClCompile>
     <ClCompile Include="..\..\include\imgui\imgui_tables.cpp">
       <Filter>DevUI\Dear ImGUI</Filter>
     </ClCompile>
-    <ClCompile Include="MouseHandler.cpp">
-      <Filter>Input\Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SpriteSheet.h">
-      <Filter>Main\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Util.h">
-      <Filter>Main\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation.h">
       <Filter>Main\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Main\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ActorUpdateManager.h">
-      <Filter>Event\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventHandler.h">
-      <Filter>Event\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventHandlerManager.h">
-      <Filter>Event\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Event\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowUpdateManager.h">
-      <Filter>Event\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Actor.h">
-      <Filter>Actor\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>Actor\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Actor\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FileOpenWindow.h">
       <Filter>DevUI\Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GuiBaseWindow.h">
       <Filter>DevUI\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGuiEventHandler.h">
-      <Filter>DevUI\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ImGuiUiManager.h">
-      <Filter>DevUI\Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseHandler.h">
-      <Filter>Input\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
