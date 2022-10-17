@@ -1,27 +1,10 @@
 // renderer.cpp : Defines the functions for the static library.
 //
 
-#include "Renderer.h"
+#include "pch.h"
+#include "framework.h"
 
-Renderer::Renderer()
-{
-}
-
-int Renderer::init()
-{
-	glewInit();
-	glewExperimental = true;
-
-	const char* glsl_version = "#version 330";
-
-	return 0;
-}
-
-void Renderer::framebufferSizeCallback(GLFWwindow* window, int width, int height)
-{
-	glViewport(0, 0, width, height);
-}
-
-void Renderer::scrollCallback(GLFWwindow* window, double xoffset, double yoffset)
+// TODO: This is an example of a library function
+void fnrenderer()
 {
 }
