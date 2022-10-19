@@ -24,6 +24,17 @@
   <ItemGroup>
     <ClInclude Include="Window.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\camera\camera.vcxproj">
+      <Project>{17e854dd-2477-4565-96b8-41331930fd29}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\renderer\renderer.vcxproj">
+      <Project>{4a2c8f39-d314-40df-ac00-86451d3de949}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\util\util.vcxproj">
+      <Project>{795b4ed0-2718-4e3d-9db6-0c5aa758da54}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -118,6 +129,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\camera;$(SolutionDir)include;$(SolutionDir)src\util;$(SolutionDir)src\renderer;$(SolutionDir)src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -135,6 +147,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\camera;$(SolutionDir)include;$(SolutionDir)src\util;$(SolutionDir)src\renderer;$(SolutionDir)src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>

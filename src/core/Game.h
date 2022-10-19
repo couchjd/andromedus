@@ -3,12 +3,7 @@
 #include <GLFW/glfw3.h>
 #include "imgui/imgui.h"
 
-//#include <Window.h>
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-void processInput(GLFWwindow* window);
+#include <Window.h>
 
 class Game
 {
@@ -23,5 +18,6 @@ public:
    void render();
 
 private:
-   //Window* m_test_window;
+   Window* m_main_window;
+   Camera* m_camera;
 };
