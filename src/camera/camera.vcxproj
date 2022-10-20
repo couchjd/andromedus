@@ -19,27 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Window.cpp" />
+    <ClInclude Include="Camera.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\camera\camera.vcxproj">
-      <Project>{17e854dd-2477-4565-96b8-41331930fd29}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\renderer\renderer.vcxproj">
-      <Project>{4a2c8f39-d314-40df-ac00-86451d3de949}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\util\util.vcxproj">
-      <Project>{795b4ed0-2718-4e3d-9db6-0c5aa758da54}</Project>
-    </ProjectReference>
+    <ClCompile Include="Camera.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5e10774b-5fbc-40a7-9b53-c82c3581c74f}</ProjectGuid>
-    <RootNamespace>window</RootNamespace>
+    <ProjectGuid>{17e854dd-2477-4565-96b8-41331930fd29}</ProjectGuid>
+    <RootNamespace>camera</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -135,18 +124,13 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\camera;$(SolutionDir)include;$(SolutionDir)src\util;$(SolutionDir)src\renderer;$(SolutionDir)src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <AdditionalIncludeDirectories>$(SolutionDir)include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
-    <Lib>
-      <AdditionalDependencies>camera.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -158,7 +142,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\camera;$(SolutionDir)include;$(SolutionDir)src\util;$(SolutionDir)src\renderer;$(SolutionDir)src\core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
