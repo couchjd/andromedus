@@ -9,20 +9,6 @@
 
 #include <iostream>
 
-// settings
-const unsigned int SCR_WIDTH = 1024;
-const unsigned int SCR_HEIGHT = 768;
-
-// camera
-Camera camera(glm::vec3(0.0f, 0.0f, 9.0f));
-float lastX = SCR_WIDTH / 2.0f;
-float lastY = SCR_HEIGHT / 2.0f;
-bool firstMouse = true;
-
-// timing
-float deltaTime = 0.0f;
-float lastFrame = 0.0f;
-
 Game::Game() //:
    //m_test_window(nullptr)
 {
@@ -36,10 +22,9 @@ Game::init()
    DEBUG(method_name << " : Initializing subsystems.");
    m_main_window = new Window();
    m_main_window->init(SCR_WIDTH, SCR_HEIGHT, "Andromedus", nullptr, nullptr);
-   m_camera = new Camera();
+   m_camera = new Camera(glm::vec3(0.0f, 0.0f, 9.0f));
 
    glfwSetWindowUserPointer(m_main_window->getGLWindow(), reinterpret_cast<void*>(this));
-
 }
 
 int
@@ -79,15 +64,15 @@ Game::run()
 
       // render
       // ------
-      glClearColor(0.05f, 0.75f, 0.05f, 1.0f);
+      glClearColor(0.05f, 0.05f, 0.05f, 1.0f);
       glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
       // don't forget to enable shader before setting uniforms
       ourShader.use();
 
       // view/projection transformations
-      glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-      glm::mat4 view = camera.GetViewMatrix();
+      glm::mat4 projection = glm::perspective(glm::radians(m_camera->Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+      glm::mat4 view = m_camera->GetViewMatrix();
       ourShader.setMat4("projection", projection);
       ourShader.setMat4("view", view);
 
@@ -96,7 +81,8 @@ Game::run()
       model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
       model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));	// it's a bit too big for our scene, so scale it down
       ourShader.setMat4("model", model);
-      ourModel.Draw(ourShader);
+      
+      m_main_window->draw(ourModel, ourShader);
 
       // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
       // -------------------------------------------------------------------------------
@@ -129,4 +115,9 @@ void Game::update()
 void Game::render()
 {
    
+}
+
+Camera* Game::getCamera()
+{
+   return m_camera;
 }

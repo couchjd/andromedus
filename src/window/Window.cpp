@@ -44,8 +44,6 @@ status_type Window::init(
 
 	}
 
-
-
    return status;
 }
 
@@ -74,7 +72,7 @@ bool Window::shouldClose()
 
 GLFWwindow* Window::getGLWindow()
 {
-
+	return m_gl_window;
 }
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
@@ -89,13 +87,13 @@ void processInput(GLFWwindow* window)
 		glfwSetWindowShouldClose(window, true);
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		camera->ProcessKeyboard(FORWARD, deltaTime);
+		camera->ProcessKeyboard(FORWARD, game->deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		camera->ProcessKeyboard(BACKWARD, deltaTime);
+		camera->ProcessKeyboard(BACKWARD, game->deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-		camera->ProcessKeyboard(LEFT, deltaTime);
+		camera->ProcessKeyboard(LEFT, game->deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		camera->ProcessKeyboard(RIGHT, deltaTime);
+		camera->ProcessKeyboard(RIGHT, game->deltaTime);
 
 	if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -123,18 +121,18 @@ void mouseCallback(GLFWwindow* window, double xposIn, double yposIn)
 	float xpos = static_cast<float>(xposIn);
 	float ypos = static_cast<float>(yposIn);
 
-	if (firstMouse)
+	if (game->firstMouse)
 	{
-		lastX = xpos;
-		lastY = ypos;
-		firstMouse = false;
+		game->lastX = xpos;
+		game->lastY = ypos;
+		game->firstMouse = false;
 	}
 
-	float xoffset = xpos - lastX;
-	float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+	float xoffset = xpos - game->lastX;
+	float yoffset = game->lastY - ypos; // reversed since y-coordinates go from bottom to top
 
-	lastX = xpos;
-	lastY = ypos;
+	game->lastX = xpos;
+	game->lastY = ypos;
 
 	camera->ProcessMouseMovement(xoffset, yoffset);
 }
